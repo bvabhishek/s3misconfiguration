@@ -38,7 +38,7 @@ aws s3 ls s3://$s3bucket
 * Step 7: Lets first download the fishy files 
 
 ```bash
- aws s3 cp s3://$s3bucket/ssn.jpeg /home/we45-abhi/seasides/
+ aws s3 cp s3://$s3bucket/ssn.jpeg /home/abhi/seasides/
 
 ```
 
