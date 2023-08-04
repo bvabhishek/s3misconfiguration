@@ -3,17 +3,17 @@
 * Clone the repository 
 
 ```bash
-    git clone https://github.com/bvabhishek/s3misconfiguration.git
+git clone https://github.com/bvabhishek/s3misconfiguration.git
 ```
 * Step 1: Change Directory
 
 ```bash
-cd /s3misconfiguration
+cd s3misconfiguration
 ```
 * Step : Initialise terraform 
 
 ```bash
-   terraform init
+terraform init
 ```
 
 * Step : Run `terraform apply -auto-approve`
@@ -38,14 +38,14 @@ aws s3 ls s3://$s3bucket
 * Step 7: Lets first download the fishy files 
 
 ```bash
- aws s3 cp s3://$s3bucket/ssn.jpeg /home/abhi/seasides/
+aws s3 cp s3://$s3bucket/ssn.jpeg /home/abhi/seasides/
 
 ```
 
 * Step 8: Let's upload a new file 
 
 ```bash
- aws s3 cp main.tf s3://$s3bucket --no-sign-request --region us-west-2
+aws s3 cp main.tf s3://$s3bucket --no-sign-request --region us-west-2
 ```
 
 * Step 9: Let's Delete a file 
