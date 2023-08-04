@@ -58,7 +58,7 @@ aws s3 cp s3://$s3bucket/creds.txt /home/we45-abhi/seasides/
 * Step 8: Let's upload a new file 
 
 ```bash
-aws s3 cp seasides.jpeg s3://$s3bucket --no-sign-request --region us-west-2
+aws s3 cp main.tf s3://$s3bucket --no-sign-request --region us-west-2
 ```
 
 * Step 9: Let's Delete a file 
