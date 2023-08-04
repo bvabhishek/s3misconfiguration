@@ -67,8 +67,8 @@ resource "aws_s3_bucket_object" "lab1object2" {
 
 resource "aws_s3_bucket_object" "lab1object3" {
   bucket = aws_s3_bucket.lab1.id
-  key    = "seasides_logo.jpeg"
-  source = "seasides_logo.jpeg"
+  key    = "seasides.jpeg"
+  source = "seasides.jpeg"
 }
 
 resource "aws_s3_bucket_object" "lab1object4" {
