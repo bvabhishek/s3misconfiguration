@@ -1,8 +1,8 @@
 # S3 Misconfiguration
 
-## Note - No aws configuration required for this lab
+### Note - No aws configuration required for this lab
 
-## please install the below cli tools 
+### please install the below cli tools 
 
 
 * AWS CLI
