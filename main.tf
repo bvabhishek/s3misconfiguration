@@ -5,7 +5,7 @@ provider "aws"{
 
 
 resource "aws_s3_bucket" "lab1" {
-  bucket = "sslab1-${random_string.random_name.result}"
+  bucket = "seasideslab1-${random_string.random_name.result}"
   force_destroy = true
   }
 
@@ -57,6 +57,24 @@ resource "aws_s3_bucket_object" "lab1object" {
   bucket = aws_s3_bucket.lab1.id
   key    = "ssn.jpeg"
   source = "ssn.jpeg"
+}
+
+resource "aws_s3_bucket_object" "lab1object2" {
+  bucket = aws_s3_bucket.lab1.id
+  key    = "emp_pay_dont_delete.csv"
+  source = "emp_pay_dont_delete.csv"
+}
+
+resource "aws_s3_bucket_object" "lab1object3" {
+  bucket = aws_s3_bucket.lab1.id
+  key    = "seasides_logo.jpeg"
+  source = "seasides_logo.jpeg"
+}
+
+resource "aws_s3_bucket_object" "lab1object4" {
+  bucket = aws_s3_bucket.lab1.id
+  key    = "creds.txt"
+  source = "creds.txt"
 }
 
 resource "random_string" "random_name" {
