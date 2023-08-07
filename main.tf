@@ -55,8 +55,8 @@ resource "aws_s3_bucket_public_access_block" "seaslab1" {
 
 resource "aws_s3_bucket_object" "lab1object" {
   bucket = aws_s3_bucket.lab1.id
-  key    = "ssn.jpeg"
-  source = "ssn.jpeg"
+  key    = "ssn.jpg"
+  source = "ssn.jpg"
 }
 
 resource "aws_s3_bucket_object" "lab1object2" {
