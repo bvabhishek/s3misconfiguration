@@ -122,5 +122,7 @@ Step 6: Lets retrive it with our encryption key
 ```bash
 aws s3 cp s3://$s3bucket/secret.txt . --sse-c --sse-c-key $key
 ```
-
- 
+Destroy the resources
+```bash
+terraform destroy -auto-approve
+```
