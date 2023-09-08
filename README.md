@@ -1,7 +1,6 @@
 # S3 Misconfiguration
 
 ## Follow the below instructions given to solve this Lab
-### Note - No aws configuration required for this Lab
 
 ### please install the below cli tools 
 
@@ -77,15 +76,56 @@ aws s3 cp seasides.jpeg s3://$s3bucket --no-sign-request --region us-west-2
 aws s3 rm s3://$s3bucket/emp_pay_dont_delete.csv --no-sign-request --region us-west-2
 ```
 
-* Step 11: Tear Down
-
-```bash
-terraform destroy -auto-approve
-```
 
 * By this we know that the attacker has performed all the malicious functionalities ie, CRUD operations which leads to Vulnerabilities such as 
- * Broken Authentication
- * Sensitive Information Disclosure 
+* Broken Authentication
+* Sensitive Information Disclosure 
 
+# Defence 
+
+Using Client Side Encryption 
+
+
+
+
+
+Step 1 : Ensure maximum protection is being given to the bucket and its object. You can change the Bucket policy
+In line no 22 , 29 & 36 change the Effect to "Deny" which should look like 
+
+```bash
+resource "aws_s3_bucket_policy" "lab1_policy" {
+  bucket = aws_s3_bucket.lab1.id
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicAccess",
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "s3:*",
+      "Resource": "${aws_s3_bucket.lab1.arn}/*"
+    },
+    {
+      "Sid": "PublicWrite-PutObject",
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "s3:PutObject",
+      "Resource": "${aws_s3_bucket.lab1.arn}/*"
+    },
+    {
+      "Sid": "AllowListObjects",
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "s3:ListBucket",
+      "Resource": "${aws_s3_bucket.lab1.arn}"
+    }
+  ]
+
+}
+EOF
+}
+```
 
  
