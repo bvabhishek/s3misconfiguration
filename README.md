@@ -81,13 +81,48 @@ aws s3 rm s3://$s3bucket/emp_pay_dont_delete.csv --no-sign-request --region us-w
 * Broken Authentication
 * Sensitive Information Disclosure 
 
-# Defence 
+# Defence Part 1
 
-Using Client Side Encryption 
+Using Server Side encryption with Customer provided keys.
 
+Step 1: Create a secrete file called secret.txt
 
+```bash
+echo "Welcome to Seasides, Your secret coupon is HASDJFH324878QWER" > secret.txt
+```
+Step 2: Lets generate a ecnryption key with AES-128-CBC encryption algorithm with openssl
+note openssl is a widely used open-source cryptographic library and toolset
 
+```bash
+openssl enc -aes-128-cbc -k secret -P
+```
+Step 3: lets make the key an environmental variable
 
+```bash
+export key=<value of key>
+```
+Step 4: Lets upload the secret file along with the header encryption key
+```bash
+aws s3 cp secret.txt s3://$s3bucket/ --sse-c --sse-c-key $key
+```
+
+Now, Go to the console and try to access or view the secret file 
+
+Step 5: Try to download the secret file 
+
+```bash
+aws s3 cp s3://$s3bucket/secret.txt .
+```
+It is clear that
+* we wont be able to retrive or access those objects which have client side encryption.
+* we wont be able to view the encrypted object in AWS Console
+
+Step 6: Lets retrive it with our encryption key
+
+```bash
+aws s3 cp s3://$s3bucket/secret.txt . --sse-c --sse-c-key $key
+```
+# Defense part 2
 
 Step 1 : Ensure maximum protection is being given to the bucket and its object. You can change the Bucket policy
 In line no 22 , 29 & 36 change the Effect to "Deny" which should look like 
