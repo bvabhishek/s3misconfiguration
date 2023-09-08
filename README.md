@@ -81,7 +81,7 @@ aws s3 rm s3://$s3bucket/emp_pay_dont_delete.csv --no-sign-request --region us-w
 * Broken Authentication
 * Sensitive Information Disclosure 
 
-# Defence Part 1
+# Defence with Encryption
 
 Using Server Side encryption with Customer provided keys.
 
@@ -121,46 +121,6 @@ Step 6: Lets retrive it with our encryption key
 
 ```bash
 aws s3 cp s3://$s3bucket/secret.txt . --sse-c --sse-c-key $key
-```
-# Defense part 2
-
-Step 1 : Ensure maximum protection is being given to the bucket and its object. You can change the Bucket policy
-In line no 22 , 29 & 36 change the Effect to "Deny" which should look like 
-
-```bash
-resource "aws_s3_bucket_policy" "lab1_policy" {
-  bucket = aws_s3_bucket.lab1.id
-
-  policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "PublicAccess",
-      "Effect": "Deny",
-      "Principal": "*",
-      "Action": "s3:*",
-      "Resource": "${aws_s3_bucket.lab1.arn}/*"
-    },
-    {
-      "Sid": "PublicWrite-PutObject",
-      "Effect": "Deny",
-      "Principal": "*",
-      "Action": "s3:PutObject",
-      "Resource": "${aws_s3_bucket.lab1.arn}/*"
-    },
-    {
-      "Sid": "AllowListObjects",
-      "Effect": "Deny",
-      "Principal": "*",
-      "Action": "s3:ListBucket",
-      "Resource": "${aws_s3_bucket.lab1.arn}"
-    }
-  ]
-
-}
-EOF
-}
 ```
 
  
