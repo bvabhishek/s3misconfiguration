@@ -24,7 +24,7 @@ git clone https://github.com/bvabhishek/s3misconfiguration.git
 * Step 2: Change Directory
 
 ```bash
-cd /s3misconfiguration
+cd s3misconfiguration/
 ```
 * Step 3: Initialise terraform 
 
