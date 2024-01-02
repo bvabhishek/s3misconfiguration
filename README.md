@@ -51,10 +51,10 @@ aws s3 ls s3://$s3bucket
 
 * Step 7: Now lets perform all the possible attack scenario 
 
-* Step 8: Lets first download the fishy files - change to your current working directory
+* Step 8: Lets first download the fishy files - to your current working directory
 
 ```bash
-aws s3 cp s3://$s3bucket/creds.txt /home/abhi/seasides/
+aws s3 cp s3://$s3bucket/creds.txt . --no-sign-request --region us-west-2
 
 ```
 * To download all the files from the bucket use sync command
